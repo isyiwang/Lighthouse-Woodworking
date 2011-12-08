@@ -5,17 +5,6 @@
 *  licensed under MIT			<http://opensource.org/licenses/mit-license.php>
 *
 */
-.cf:before, .cf:after {
-  content: "";
-  display: table;
-}
-.cf:after {
-  clear: both;
-}
-/* For IE 6/7 (trigger hasLayout) */
-.cf {
-  zoom: 1;
-}
 body,
 div,
 h1,
@@ -179,16 +168,9 @@ img {
   font-size: 6.875em;
   line-height: 1.0909090909090908em;
 }
-body {
-  /* 16px / 24px */
-
-  font-size: 1em;
-  line-height: 1.5em;
-}
-.ie body {
-  width: 40em;
-  margin: 0 auto;
-  font-size: 1.0625em;
+@font-face {
+  font-family: roboto-bold;
+  src: url('../typography/Roboto-Bold.ttf');
 }
 /*
 *
@@ -198,9 +180,32 @@ body {
 *  5.55555% | %  25  50  75  100 | 5.55555%
 *
 */
+body {
+  /* 16px / 24px */
+
+  font-size: 1em;
+  line-height: 1.5em;
+  font-family: 'Droid Serif', serif;
+}
+.ie body {
+  width: 40em;
+  margin: 0 auto;
+  font-size: 1.0625em;
+}
 header, #main {
   margin: 0 5.555555555555555%;
   zoom: 1;
+  color: #222222;
+  background: #fcfcfc;
+}
+header:before, #main:before {
+  content: '';
+  display: block;
+}
+header:after, #main:after {
+  content: '';
+  display: table;
+  clear: both;
 }
 h1,
 nav,
@@ -219,12 +224,8 @@ article {
   box-sizing: border-box;
 }
 article {
-  /* 16px / 24px */
-
-  font-size: 1em;
-  line-height: 1.5em;
   padding: 0 0.75em;
-  text-align: center;
+  text-align: left;
 }
 h1#title {
   padding: 0 0.5em;
@@ -234,6 +235,7 @@ h1#title {
   line-height: 1.3846153846153846em;
   margin: 0.46153846153846156em 0;
   text-align: center;
+  font-family: roboto-bold;
 }
 nav {
   padding: 0 0.75em;
@@ -243,6 +245,7 @@ nav ul {
 }
 nav ul li {
   list-style: none;
+  font-family: roboto-bold;
 }
 h2 {
   /* 26 / 36px */
@@ -250,11 +253,31 @@ h2 {
   font-size: 1.625em;
   line-height: 1.3846153846153846em;
   margin: 1.3846153846153846em 0 0;
-  text-align: center;
+  text-align: left;
   font-weight: normal;
+  font-family: roboto-bold;
+}
+#main {
+  zoom: 1;
+  background: #fcfcfc;
+}
+#main:before {
+  content: '';
+  display: block;
+}
+#main:after {
+  content: '';
+  display: table;
+  clear: both;
 }
 button#request {
   width: 75%;
+  font-family: roboto-bold;
+  color: white;
+  background: green;
+}
+#request-button {
+  text-align: center;
 }
 #calendar {
   border: none;
@@ -267,6 +290,7 @@ h3 {
 .img {
   background: #eee;
   height: 200px;
+  padding: 0 0.75em;
 }
 @media screen and (min-width: 48em) {
   body {
@@ -292,27 +316,50 @@ h3 {
     float: left;
     width: 50%;
   }
+  #content:before {
+    content: '';
+    display: block;
+  }
+  #content:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
   #sidebar {
     zoom: 1;
     float: right;
     width: 50%;
   }
+  #sidebar:before {
+    content: '';
+    display: block;
+  }
+  #sidebar:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
   button#request {
     width: 50%;
   }
 }
-@media screen and (min-width: 56em) {
+@media screen and (min-width: 62em) {
   body {
-    font-size: 1em;
+    font-size: 0.9375em;
   }
   header {
-    margin: 0.75em 5.555555555555555% 0;
+    margin: 0 5.555555555555555% 0;
+    padding-top: 3em;
   }
   h1#title {
     float: left;
     width: 62.5%;
     margin: 0;
     text-align: left;
+    /* 42px / 48px */
+  
+    font-size: 2.625em;
+    line-height: 1.1428571428571428em;
   }
   header nav {
     float: right;

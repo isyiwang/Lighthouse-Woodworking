@@ -10,6 +10,15 @@
 	        outline-radius: @radius;		
 }
 
+.text-shadow(
+    @x: 1px, 
+    @y: 1px, 
+    @blur: 1px, 
+    @colour: rgba(0, 0, 0, .6)
+) {
+    text-shadow: @arguments;
+}
+
 .box-shadow( 
 	@x : 2px, 
 	@y : 2px, 
@@ -137,18 +146,8 @@
 
 
 // Microclearfix from nicolas gallagher -- http://nicolasgallagher.com/micro-clearfix-hack/
-
-.cf:before,
-.cf:after {
-    content:"";
-    display:table;
-}
-
-.cf:after {
-    clear:both;
-}
-
-/* For IE 6/7 (trigger hasLayout) */
-.cf {
-    zoom:1;
+.cf() {
+    &:before { content: ''; display: block; }
+    &:after { content: ''; display: table; clear: both; }
+    zoom: 1;
 }
