@@ -126,6 +126,9 @@ table {
     border-spacing: 0;
 }
 
+h1, h2, h3, h4, h5, a {
+    font-weight: 400;
+}
 
 // Simple fluid media
 
@@ -193,10 +196,12 @@ img {
 @red: #870000;
 @oatmeal: #A18D72;
 @brown: #291C1C;
+@light-brown: rgba(41, 28, 28, 0.65);
 @sand: #e2cb92;
 @med-gray: #8c8c8c;
 @white: #ffffff;
 @light-white: #fcfcfc;
+@tan: #F6E6CE;
 
 /*
 *
@@ -224,19 +229,20 @@ body {
 	font-size: (@font-size + 1) / @em;
 }
 
-header, #main {
+header, #main, footer {
     margin: 0 @column;
     #hl.clearfix();
     color: @white;
 }
 
-h1, nav, nav ul, nav ul li, #main, h2, button#request, #calendar, #content, #sidebar, figure, article, div, .img {
+h1, nav, nav ul, nav ul li, #main, h2, #calendar, #content, figure, article, div, img, footer {
     #hl.box-sizing();
 }
 
 article {
     padding: 0 (@line-height) / @em;
     text-align: left;
+    #hl.clearfix();
 }
 
 p {
@@ -271,6 +277,77 @@ h1#woodworking {
     padding-top: 1 / 2em;
 }
 
+div#request {
+    position: relative;
+    float: right;
+    //width: 100% / 3;
+    margin-top: 24 / @em;
+    height: (24 * 5) / @em;
+    padding: (24) / @em (24 * 2.5) / @em;
+    background: @tan;
+    text-align: center;
+    border: 2px solid @light-brown;
+    
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+a#request-box {
+    text-decoration: none;
+}
+
+div#request hr {
+    display: inline-block;
+    background: @light-brown;
+    width: 25%;
+    padding: 0px 5px;
+    border: none;
+    height: 1px;
+}
+
+div#request #a {
+    display: inline-block;
+    margin: 0px 5px;
+    font-family: serifbeta-italic;
+}
+
+div#request:before, div#request:after
+{
+	position: absolute;
+	width: 40%;
+	height: 50px;
+	content: ' ';
+	left: 12px;
+	bottom: 4px;
+	background: transparent;
+	-webkit-transform: skew(-5deg) rotate(-5deg);
+	-moz-transform: skew(-5deg) rotate(-5deg);
+	-ms-transform: skew(-5deg) rotate(-5deg);
+	-o-transform: skew(-5deg) rotate(-5deg);
+	transform: skew(-5deg) rotate(-5deg);
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	z-index: -1;
+}
+
+div#request:after
+{
+	left: auto;
+	right: 12px;
+	-webkit-transform: skew(5deg) rotate(5deg);
+	-moz-transform: skew(5deg) rotate(5deg);
+	-ms-transform: skew(5deg) rotate(5deg);
+	-o-transform: skew(5deg) rotate(5deg);
+	transform: skew(5deg) rotate(5deg);
+}
+
+div#request h4 {
+    color: @brown;
+    font-size: 1.5em;
+}
+
 nav {
     clear: both;
     //padding: 0 (@line-height / 2) / @em;
@@ -285,6 +362,7 @@ nav ul li {
     text-transform: lowercase;
     text-shadow: 1px 1px 5px #555;
     .font-26();
+    font-weight: 400;
 }
 
 nav ul li a {
@@ -309,7 +387,7 @@ h2 {
     #hl.clearfix();
     background: @brown;
     border: 1px solid @sand;
-    border-bottom: none;
+    padding-bottom: 24 / @em;
 }
 
 button#request {
@@ -333,32 +411,48 @@ h3 {
     margin: (24/@em) 0 (24/@em);
 }
 
+span {
+    //color: @sand;
+    font-family: serifbeta-italic;
+    font-size: 18 / @em;
+    letter-spacing: 1px;
+}
+
 figure {
-    height: 100%;
+    padding: 0 1.5em;
 }
 
-// Images
-#ron {
-    background: url("../images/ron.jpg") no-repeat;
-}
-
-#ron2 {
-    background: url("../images/ron.jpg") no-repeat;
-    height: 50%;
-}
-
-.img {
-    background-size: contain;
-    height: 100%;
+img {
+    margin: 0 0 @line-height / @em;
     max-width: 100%;
-    margin: 0 @line-height / @em;
+    max-height: 100%;
+    border: solid 2px #eee;
+    #hl.drop-shadow(0, 0, 5px, 5px, #111);
+}
+
+footer {
+    height: (24 * 2) / @em;
+    background-color: @tan;
+    padding: 0 (@line-height) / @em;
+    border: 1px solid @tan;
+    border-top: 1px @light-brown solid;
+}
+
+footer h2 {
+    color: @light-brown;
+    font-family: serifbeta-regular;
+    letter-spacing: 0px;
+    .font-16();
+    text-align: left;
+    margin: 0;
+    padding-top: 1.5em;
 }
 
 // 768px (48em) - Tablet layout
 @media screen and (min-width: 48em) {
 
 	body {
-		// Reset baseline grid to 16/16 = 1 
+		// Reset baseline grid to 17/16 = 1.0625
 		font-size: (@font-size + 1) / @em;
 	}
 	
@@ -378,40 +472,32 @@ figure {
 	    float: left;
 	    width: 50%;
 	}
-	
-	#sidebar {
-	    #hl.clearfix();
-	    float: right;
-	    width: 50%;
-	}
-	
-	button#request {
-	    width: 50%;
-	}
 }
+
+/*
+*
+*  Eight-column grid active
+*  ----------------------------------------------------------------------
+*  Margin   | #  1     2     3     4     5     6     7     8   |   Margin
+*  5.55555% | %  12.5  25.0  37.5  50.0  62.5  75.0  87.5  100 | 5.55555%
+*	
+*
+*/
 
 // 896px (60em) -- Regular layout
 @media screen and (min-width: 62em) {
     @content-width: 75%;
-    @sidebar-width: 100% - @content-width;
     
     body {
         font-size: (@font-size) / @em;
     }
     
-    header {
-        margin: 0 @column 0;
-    }
-    
-    h1#title {
-        float: left;
-        width: 62.5%;
-        margin: 0;
-        text-align: left;
-        .font-42();
+    header, #main, footer {
+        margin: 0 3 * @column 0;
     }
     
     div#title {
+        //width: 50% * 5 / 6;
         height: 168 / @em;
     }
     
@@ -430,12 +516,7 @@ figure {
     
     #content {
         float: left;
-        width: @content-width;
-    }
-    
-    #sidebar {
-        float: right;
-        width: @sidebar-width;
+        width: 100%;
     }
     
     article h2, p {
@@ -445,7 +526,7 @@ figure {
     #content article {
         position: relative;
         width: 50%;
-    }
+    }    
     
     #content article:nth-of-type(2n) {
 		margin-left: 50%;
